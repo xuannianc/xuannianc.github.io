@@ -42,7 +42,7 @@ class Entry(models.Model):
         return self.headline
 
 ```
-#1.  创建对象
+# 1.  创建对象
 ### 方法一：使用 Model 的 save() 方法
 * 创建单个独立的对象  Blog
 
@@ -156,7 +156,7 @@ entry.authors.add(author2)
 entry.save()
 print(entry.headline)
 ```
-#2.  删除对象
+# 2.  删除对象
 ### delete() 方法
 * 调用 QuerySet 的 delete() 方法，***不会间接调用 model 对象的 delete() 方法***
 	* 返回值是一个 tuple,第一个元素是一共删除的对象的个数，第二个元素是一个 dict,统计分别删除了各个类型的多少对象
@@ -199,7 +199,7 @@ print(entry.headline)
 * 多对多的删除，删除 Entry 或者 Author 会删除第三张关联关系表的条目
 * OneToOne 字段也有 on_delete 参数
 
-#3.  更新对象
+# 3.  更新对象
 ### 更新某个对象的字段
 * 更新普通字段
 
@@ -284,7 +284,7 @@ Traceback (most recent call last):
     raise FieldError("Joined field references are not permitted in this query")
 django.core.exceptions.FieldError: Joined field references are not permitted in this query
 ```	
-#4.  比较对象  
+# 4.  比较对象  
 使用 == 比较，底层比较的 primary key.如果 primary key 相同,那么两个对象相同。
 
 ```
@@ -297,7 +297,7 @@ django.core.exceptions.FieldError: Joined field references are not permitted in 
 >>> entry1==entry2
 True
 ```
-#5.  拷贝对象
+# 5.  拷贝对象
 * 单个对象的拷贝（如 Blog)
 
 	```
@@ -341,7 +341,7 @@ True
 	<QuerySet []>
 	```
 	
-#6.  获取关联对象
+# 6.  获取关联对象
 ### 多对一 ForeignKey(如 Entry->Blog)
 * 通过 Entry 对象获取 Blog 对象，第一次获取会去查询数据库。而 select_related() QuerySet 在访问关联对象之前就已经查询数据库
 
