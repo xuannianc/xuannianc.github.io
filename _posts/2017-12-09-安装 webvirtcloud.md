@@ -28,7 +28,7 @@ git clone git@github.com:VanWade/webvirtcloud.git
     pip install -r requirements.txt
     Django==1.8.11
     libvirt-python==3.10.0
-    libxml2-python==2.9.1
+    http://git.gnome.org/browse/libxml2/snapshot/libxml2-2.9.1.tar.gz#egg=libxml2-python&subdirectory=python
     MySQL-python==1.2.5
     numpy==1.13.3
     uWSGI==2.0.15
@@ -37,16 +37,22 @@ git clone git@github.com:VanWade/webvirtcloud.git
 
 #### 配置
 * 配置 uwsgi  
-  修改 kvmmgr_venv/webvirtcloud/conf/uwsgi/kvmmgr\_uwsgi.ini
+  * 修改 kvmmgr_venv/webvirtcloud/conf/uwsgi/kvmmgr\_uwsgi.ini
+
 * 配置 supervisor  
+
     ```
-    cp kvmmgr_venv/webvirtcloud/conf/supervisor/kvmmgr_supervisor.ini /etc/supervisord.d/
+    cp kvmmgr_venv/webvirtcloud/conf/supervisor/* /etc/supervisord.d/
     ```
+    * 修改 celery.conf,gstfsd.conf 和 kvmmgr_supervisor.conf
 * 配置 nginx  
+
     ```
     cp kvmmgr_venv/webvirtcloud/conf/nginx/kvmmgr_nginx.conf /etc/nginx/conf.d/
     ```
-
+* 配置 django
+    * 修改 kvmmgr_venv/webvirtcloud/webvirtcloud/settings.py 中 DATABASES 的配置
+    * 修改 kvmmgr_venv/webvirtcloud/webvirtcloud/celery.py 中 REDIS 的配置
 #### 启动
 
 * 关闭防火墙

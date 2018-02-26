@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Testing in Django"
+title:  "django testing"
 date:   2017-11-21
 tag: django
 ---
